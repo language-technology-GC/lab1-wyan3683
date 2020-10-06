@@ -6,22 +6,29 @@
 import nltk
 
 # Assign variable to open news data
-data = "news.2010.en.shuffled.deduped"
+data = "news.2008.en.shuffled.deduped"
 data = open(data, "r", encoding = "utf-8")
 
 # Tokenize using NLTK word tokenizer and write to new .txt file
-with open("news2010.txt", "w", encoding = "utf-8") as f:
+with open("news2008.txt", "w", encoding = "utf-8") as f:
     for line in data:
         f.write("%s\n" % (nltk.word_tokenize(line)))
     print("Complete")
 
 # After tokenization complete, run provided PPMI script over tokenized data.
 
+# News Crawl from 2010
 # INFO: 277 words tracked
 # INFO: 202 pairs tracked
 # INFO: 168029483 tokens counted
 # INFO: 0 pairs covered
 # Returned blank results
+
+# News Crawl from 2008 
+# INFO: 277 words tracked
+# INFO: 202 pairs tracked
+# INFO: 278831148 tokens counted
+# INFO: 0 pairs covered
 
 '''
 >>> Spearman Correlation Coefficient (to 4 digits):
@@ -47,5 +54,8 @@ with open("news2010.txt", "w", encoding = "utf-8") as f:
         The first run of the PPMI script printed 277 words tracked, 202 pairs 
     tracked, and 168,029,483 tokens counted. However, it showed 0 pairs were
     covered, and the --results_path returned empty.
-    
+        My second attempt at running the PPMI script was using the news crawl
+    data from 2008 rather than 2010, since others in the class mentioned the [0 
+    pairs covered] may have been an issue with the dataset. Unfortunately, this
+    also resulted in 0 pairs covered and the --results_path returned empty.
 '''
